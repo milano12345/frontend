@@ -1,6 +1,25 @@
 import React, { Component } from 'react';
 import "./register.css"
 class Register extends Component {
+    constructor() {
+        super();
+        this.state = {
+            firstName: null,
+            lastName: null,
+            Email: null,
+            Password: null, 
+            formErrors: {
+                firstName: '',
+                lastName: '',
+                Email: '',
+                Password: '',
+            }
+        }
+    }
+
+    handleSubmit = e => {
+        e.preventDefault();
+    }
     render() {
         return (
         <div className="wrapper">
@@ -33,7 +52,7 @@ class Register extends Component {
                     <div className="Email">
                         <label htmlFor="Email">E-Mail</label>
                         <input
-                            type="text"
+                            type="email"
                             className=""
                             placeholder="E-Mail"
                             name="Email"
@@ -44,7 +63,7 @@ class Register extends Component {
                     <div className="Password">
                         <label htmlFor="Password">Password</label>
                         <input
-                            type="text"
+                            type="password"
                             className=""
                             placeholder="Password"
                             name="Password"
@@ -52,7 +71,10 @@ class Register extends Component {
                             noValidate
                         /> <br/>
                     </div>
-                    <button type="submit">Register</button>
+                    <div className="createAccount">
+                    <button type="submit">Create Account</button>
+                    <small>Already have an account?</small>
+                    </div>
                 </form>
 
             </div>

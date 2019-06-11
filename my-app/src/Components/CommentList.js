@@ -23,3 +23,4 @@ CommentList.defaultProps = {
 };
 
 export default CommentList;
+
