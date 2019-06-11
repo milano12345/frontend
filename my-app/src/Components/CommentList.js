@@ -1,6 +1,6 @@
 import React from 'react';
 
-const commentList = props => {
+const CommentList = props => {
   return (
     <div className="Friend">
       <h3>Name: {props.receipientName}</h3>
@@ -13,7 +13,7 @@ const commentList = props => {
   );
 };
 
-commentList.defaultProps = {
+CommentList.defaultProps = {
   receipientName: '',
   receipientEmail: '',
   message: '',

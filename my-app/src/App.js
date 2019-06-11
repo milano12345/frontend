@@ -3,7 +3,8 @@ import axios from 'axios';
 import {Route} from 'react-router-dom'
 import './App.css';
 import CommentForm from './Components/CommentForm';
-
+import Register from './Components/Register/Register'
+import CommentList from './Components/CommentList'
 
 class App extends Component {
   constructor(props) {
@@ -22,6 +23,8 @@ class App extends Component {
     return (
       <div className="App">
        <CommentForm /> 
+       <CommentList />
+       <Register />
         
       </div>
     );

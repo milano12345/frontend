@@ -2,23 +2,22 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 class CommentForm extends Component {
-    constructor(props) {
-    super(props);
-    this.state = {
+   constructor() {
+    super();
+    this.state={
         receipientName: '',
         receipientEmail: '',
         message: '',
         category: '',
         sendDate: '',
-        sent: ''
-    }
-    }
-
+        sent: '',
+   }
+}
 addFriend = event => {
     event.preventDefault();
     axios({
       method: 'post',
-      url: '/CommentList',
+      url: 'https://best-friend-reminders.herokuapp.com/',
       data: {
         receipientName: this.state.receipientName,
         receipientEmail: this.state.receipientEmail,
@@ -30,9 +29,12 @@ addFriend = event => {
       }
     });
     this.setState({
-      name: '',
-      age: '',
-      height: ''
+        receipientName: '',
+        receipientEmail: '',
+        message: '',
+        category: '',
+        sendDate: '',
+        sent: '',
     });
   }
 
@@ -45,30 +47,36 @@ addFriend = event => {
       <div className="FriendForm">
         <form onSubmit={this.addFriend}>
           <input
+            className=""
+            type="text"
             onChange={this.handleInputChange}
             placeholder="Name"
             value={this.state.receipientName}
-            name="Name"
+            name="receipientName"
           /> <br/>
           <input
+            type="text"
             onChange={this.handleInputChange}
             placeholder="E-mail"
             value={this.state.receipientEmail}
             name="E-mail"
           /> <br/>
           <input
+            type="text"
             onChange={this.handleInputChange}
             placeholder="Message"
             value={this.state.message}
             name="Message"
           /> <br/>
           <input
+            type="text"
             onChange={this.handleInputChange}
             placeholder="Category"
             value={this.state.category}
             name="Category"
           /> <br/>
           <input
+            type="text"
             onChange={this.handleInputChange}
             placeholder="Send Date"
             value={this.state.sendDate}
