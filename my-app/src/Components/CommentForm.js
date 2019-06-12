@@ -17,24 +17,20 @@ addFriend = event => {
     event.preventDefault();
     axios({
       method: 'post',
-      url: 'https://best-friend-reminders.herokuapp.com/',
+      url: 'https://best-friend-reminders.herokuapp.com/api/reminders',
       data: {
-        receipientName: this.state.receipientName,
-        receipientEmail: this.state.receipientEmail,
-        message: this.state.message,
+        receipientName: this.state.name,
+        receipientEmail: this.state.age,
+        message: this.state.height,
         category: this.state.category,
         sendDate: this.state.sendDate,
         sent: this.state.sent,
-
       }
     });
     this.setState({
-        receipientName: '',
-        receipientEmail: '',
-        message: '',
-        category: '',
-        sendDate: '',
-        sent: '',
+      name: '',
+      age: '',
+      height: ''
     });
   }
 
@@ -47,47 +43,47 @@ addFriend = event => {
       <div className="FriendForm">
         <form onSubmit={this.addFriend}>
           <input
-            className=""
-            type="text"
             onChange={this.handleInputChange}
             placeholder="Name"
             value={this.state.receipientName}
             name="receipientName"
-          /> <br/>
+          />
           <input
-            type="text"
             onChange={this.handleInputChange}
-            placeholder="E-mail"
+            placeholder="E-Mail"
             value={this.state.receipientEmail}
-            name="E-mail"
-          /> <br/>
+            name="receipientEmail"
+          />
           <input
-            type="text"
             onChange={this.handleInputChange}
             placeholder="Message"
             value={this.state.message}
-            name="Message"
-          /> <br/>
-          <input
-            type="text"
+            name="message"
+          />
+              <input
             onChange={this.handleInputChange}
             placeholder="Category"
             value={this.state.category}
-            name="Category"
-          /> <br/>
-          <input
-            type="text"
+            name="category"
+          />
+            <input
             onChange={this.handleInputChange}
             placeholder="Send Date"
             value={this.state.sendDate}
-            name="Send Date"
-          /> <br/>
-          <button type="submit">Add to the List</button>
+            name="sendDate"
+          />
+            <input
+            onChange={this.handleInputChange}
+            placeholder="Sent?"
+            value={this.state.sent}
+            name="sent"
+          />
+          <button type="submit">Add to the Friends List</button>
+          {console.log(this.state)}
         </form>
       </div>
     );
   }
 }
-
 
 export default CommentForm;

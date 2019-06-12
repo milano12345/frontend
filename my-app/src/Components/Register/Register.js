@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import "./register.css"
+import axios from 'axios'
 class Register extends Component {
     constructor() {
         super();
         this.state = {
-            firstName: null,
-            lastName: null,
-            Email: null,
-            Password: null, 
+            firstName: '',
+            lastName: '',
+            Email: '',
+            Password: '', 
             formErrors: {
                 firstName: '',
                 lastName: '',
@@ -19,7 +20,17 @@ class Register extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
+        this.setState({ [e.target.name]: e.target.value });
+        const endpoint = 'https://best-friend-reminders.herokuapp.com/api/register';   
+        axios
+          .post(endpoint, this.state)
+          .then(res => {
+            localStorage.setItem('jwt', res.data.token);
+            this.props.history.push('/login');
+          })
+          .catch(error => console.error(error));
     }
+    
     render() {
         return (
         <div className="wrapper">
@@ -72,7 +83,7 @@ class Register extends Component {
                         /> <br/>
                     </div>
                     <div className="createAccount">
-                    <button type="submit">Create Account</button>
+                    <button type="submit" onSubmit={this.handleSubmit}>Create Account</button>
                     <small>Already have an account?</small>
                     </div>
                 </form>

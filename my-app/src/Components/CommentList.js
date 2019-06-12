@@ -9,6 +9,7 @@ const CommentList = props => {
       <p>Category: {props.category}</p>
       <p>Send Date: {props.sendDate}</p>
       <p>Sent: {props.sent}</p>
+        {console.log(props)}
     </div>
   );
 };
